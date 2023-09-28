@@ -4,11 +4,13 @@ const Accordion = ({ items }) => {
   const [expandedIndex, setExpandedIndex] = useState(-1);
 
   const handleExpandedClick = (expandIndex) => {
-    if (expandedIndex === expandIndex) {
-      setExpandedIndex(-1);
-    } else {
-      setExpandedIndex(expandIndex);
-    }
+    setExpandedIndex((currentExpandedIndex) => {
+      if (currentExpandedIndex === expandIndex) {
+        return -1;
+      } else {
+        return expandIndex;
+      }
+    });
   };
 
   const renderedItems = items.map((item, index) => {
